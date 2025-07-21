@@ -407,3 +407,720 @@
 
 </body>
 </html>
+‏<!DOCTYPE html>
+‏<html lang="ar">
+‏<head>
+‏<meta charset="UTF-8" />
+‏<meta name="viewport" content="width=device-width, initial-scale=1" />
+‏<title>Fuzelt - منصة اجتماعية متكاملة</title>
+‏<style>
+‏  @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;600&display=swap');
+  * {
+‏    margin: 0; padding: 0; box-sizing: border-box; direction: rtl;
+  }
+‏  body {
+‏    font-family: 'Tajawal', sans-serif;
+‏    background-color: #fff;
+‏    color: #000;
+‏    min-height: 100vh;
+‏    display: flex;
+‏    flex-direction: column;
+  }
+‏  header {
+‏    background: #000;
+‏    color: #fff;
+‏    text-align: center;
+‏    padding: 30px 0;
+‏    font-size: 50px;
+‏    font-weight: 600;
+‏    letter-spacing: 3px;
+‏    position: relative;
+  }
+‏  main {
+‏    flex: 1;
+‏    max-width: 1000px;
+‏    margin: 20px auto;
+‏    width: 90%;
+  }
+‏  nav {
+‏    display: flex;
+‏    justify-content: center;
+‏    gap: 25px;
+‏    background: #eee;
+‏    padding: 15px 0;
+‏    border-radius: 15px;
+‏    margin-bottom: 25px;
+  }
+‏  nav button {
+‏    background: none;
+‏    border: none;
+‏    font-weight: 500;
+‏    font-size: 18px;
+‏    cursor: pointer;
+‏    padding: 10px 20px;
+‏    border-radius: 25px;
+‏    transition: background 0.3s;
+  }
+‏  nav button.active, nav button:hover {
+‏    background: #000;
+‏    color: #fff;
+  }
+‏  section {
+‏    background: #f9f9f9;
+‏    padding: 25px;
+‏    border-radius: 15px;
+‏    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  }
+‏  .hidden {
+‏    display: none;
+  }
+‏  input, textarea {
+‏    width: 100%;
+‏    padding: 12px 15px;
+‏    margin: 10px 0 20px;
+‏    border: 1.5px solid #ccc;
+‏    border-radius: 10px;
+‏    font-weight: 300;
+‏    font-size: 16px;
+‏    transition: border-color 0.3s;
+  }
+‏  input:focus, textarea:focus {
+‏    border-color: #000;
+‏    outline: none;
+  }
+‏  button.primary {
+‏    background: #000;
+‏    color: #fff;
+‏    padding: 12px 30px;
+‏    font-weight: 600;
+‏    font-size: 18px;
+‏    border: none;
+‏    border-radius: 25px;
+‏    cursor: pointer;
+‏    transition: background 0.3s;
+  }
+‏  button.primary:hover {
+‏    background: #333;
+  }
+‏  .post {
+‏    background: #fff;
+‏    padding: 20px;
+‏    margin-bottom: 15px;
+‏    border-radius: 10px;
+‏    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+‏  .post img {
+‏    max-width: 100%;
+‏    border-radius: 10px;
+‏    margin-top: 10px;
+  }
+‏  .profile-info {
+‏    display: flex;
+‏    align-items: center;
+‏    gap: 20px;
+  }
+‏  .profile-info img {
+‏    width: 90px;
+‏    height: 90px;
+‏    border-radius: 50%;
+‏    object-fit: cover;
+  }
+‏  .profile-info div {
+‏    font-weight: 500;
+‏    font-size: 20px;
+  }
+‏  #chatbot {
+‏    position: fixed;
+‏    bottom: 30px;
+‏    right: 30px;
+‏    width: 320px;
+‏    background: #000;
+‏    color: #fff;
+‏    border-radius: 15px;
+‏    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+‏    padding: 15px;
+‏    font-size: 14px;
+‏    z-index: 9999;
+  }
+‏  #chatbot h4 {
+‏    font-weight: 600;
+‏    margin-bottom: 12px;
+‏    font-size: 18px;
+  }
+‏  #chatbot-messages {
+‏    height: 180px;
+‏    overflow-y: auto;
+‏    background: #111;
+‏    padding: 10px;
+‏    border-radius: 10px;
+‏    margin-bottom: 10px;
+  }
+‏  .chat-message {
+‏    margin-bottom: 8px;
+  }
+‏  .chat-user {
+‏    text-align: right;
+‏    color: #f0f0f0;
+  }
+‏  .chat-bot {
+‏    text-align: left;
+‏    color: #a0a0a0;
+  }
+‏  #chatbot input {
+‏    width: calc(100% - 60px);
+‏    padding: 10px 15px;
+‏    border: none;
+‏    border-radius: 10px;
+‏    font-size: 14px;
+‏    font-weight: 300;
+  }
+‏  #chatbot button {
+‏    width: 50px;
+‏    border: none;
+‏    background: #222;
+‏    color: #fff;
+‏    border-radius: 10px;
+‏    margin-left: 5px;
+‏    cursor: pointer;
+‏    transition: background 0.3s;
+  }
+‏  #chatbot button:hover {
+‏    background: #444;
+  }
+‏</style>
+‏</head>
+‏<body>
+
+‏<header>518 - Fuzelt</header>
+
+‏<nav>
+‏  <button id="nav-home" class="active">الرئيسية</button>
+‏  <button id="nav-posts">المنشورات</button>
+‏  <button id="nav-create-post">إنشاء منشور</button>
+‏  <button id="nav-profile">بروفايل</button>
+‏  <button id="nav-login">تسجيل دخول</button>
+‏</nav>
+
+‏<main>
+
+‏  <section id="home-section">
+‏    <h2>مرحبًا بك في Fuzelt!</h2>
+‏    <p>اكتشف المحتوى، شارك أفكارك، وتواصل مع مجتمعنا.</p>
+‏  </section>
+
+‏  <section id="posts-section" class="hidden">
+‏    <h2>المنشورات</h2>
+‏    <div id="posts-list">
+      <!-- المنشورات تظهر هنا -->
+‏    </div>
+‏  </section>
+
+‏  <section id="create-post-section" class="hidden">
+‏    <h2>إنشاء منشور جديد</h2>
+‏    <textarea id="post-text" placeholder="اكتب ما يدور في بالك..."></textarea>
+‏    <input type="file" id="post-image" accept="image/*" />
+‏    <button class="primary" id="submit-post-btn">نشر</button>
+‏  </section>
+
+‏  <section id="profile-section" class="hidden">
+‏    <h2>البروفايل</h2>
+‏    <div class="profile-info">
+‏      <img src="https://via.placeholder.com/90" alt="صورة المستخدم" id="profile-pic" />
+‏      <div>
+‏        <p id="profile-name">اسم المستخدم</p>
+‏        <p id="profile-email">الايميل</p>
+‏      </div>
+‏    </div>
+‏  </section>
+
+‏  <section id="login-section" class="hidden">
+‏    <h2>تسجيل الدخول</h2>
+‏    <input type="email" id="login-email" placeholder="الايميل" />
+‏    <input type="password" id="login-password" placeholder="كلمة المرور" />
+‏    <button class="primary" id="login-btn">دخول</button>
+‏    <p id="login-error" style="color:red; margin-top:10px;"></p>
+‏  </section>
+
+‏</main>
+
+‏<div id="chatbot">
+‏  <h4>🤖 مساعد Fuzelt</h4>
+‏  <div id="chatbot-messages"></div>
+‏  <input type="text" id="chatbot-input" placeholder="اكتب سؤالك..." />
+‏  <button id="chatbot-send">▶</button>
+‏</div>
+
+‏<script>
+  // تبويب التنقل
+‏  const sections = {
+‏    home: document.getElementById('home-section'),
+‏    posts: document.getElementById('posts-section'),
+‏    createPost: document.getElementById('create-post-section'),
+‏    profile: document.getElementById('profile-section'),
+‏    login: document.getElementById('login-section')
+  };
+‏  const navButtons = {
+‏    home: document.getElementById('nav-home'),
+‏    posts: document.getElementById('nav-posts'),
+‏    createPost: document.getElementById('nav-create-post'),
+‏    profile: document.getElementById('nav-profile'),
+‏    login: document.getElementById('nav-login')
+  };
+
+‏  function showSection(section) {
+‏    for (const key in sections) {
+‏      if (key === section) sections[key].classList.remove('hidden');
+‏      else sections[key].classList.add('hidden');
+    }
+‏    for (const key in navButtons) {
+‏      if (key === section) navButtons[key].classList.add('active');
+‏      else navButtons[key].classList.remove('active');
+    }
+  }
+
+‏  navButtons.home.addEventListener('click', () => showSection('home'));
+‏  navButtons.posts.addEventListener('click', () => showSection('posts'));
+‏  navButtons.createPost.addEventListener('click', () => showSection('createPost'));
+‏  navButtons.profile.addEventListener('click', () => showSection('profile'));
+‏  navButtons.login.addEventListener('click', () => showSection('login'));
+
+  // بيانات المستخدم (محاكاة)
+‏  let currentUser = null;
+
+  // تسجيل الدخول (محاكاة)
+‏  const loginBtn = document.getElementById('login-btn');
+‏  const loginEmail = document.getElementById('login-email');
+‏  const loginPassword = document.getElementById('login-password');
+‏  const loginError = document.getElementById('login-error');
+
+‏  loginBtn.addEventListener('click', () => {
+‏    const email = loginEmail.value.trim();
+‏    const password = loginPassword.value.trim();
+‏    if (email === '' || password === '') {
+‏      loginError.textContent = 'يرجى تعبئة جميع الحقول';
+‏      return;
+    }
+    // تسجيل دخول تجريبي
+‏    currentUser = {
+‏      name: email.split('@')[0],
+‏      email: email,
+‏      profilePic: 'https://via.placeholder.com/90'
+    };
+‏    loginError.textContent = '';
+‏    updateProfileUI();
+‏    showSection('profile');
+  });
+
+  // تحديث واجهة البروفايل
+‏  function updateProfileUI() {
+‏    if (!currentUser) return;
+‏    document.getElementById('profile-name').textContent = currentUser.name;
+‏    document.getElementById('profile-email').textContent = currentUser.email;
+‏    document.getElementById('profile-pic').src = currentUser.profilePic;
+  }
+
+  // منشورات (تخزين مؤقت)
+‏  let posts = [];
+
+  // نشر منشور جديد
+‏  const submitPostBtn = document.getElementById('submit-post-btn');
+‏  const postText = document.getElementById('post-text');
+‏  const postImage = document.getElementById('post-image');
+‏  const postsList = document.getElementById('posts-list');
+
+‏  submitPostBtn.addEventListener('click', () => {
+‏    if (!currentUser) {
+‏      alert('يجب تسجيل الدخول أولاً');
+‏      showSection('login');
+‏      return;
+    }
+‏    const text = postText.value.trim();
+‏    if (text === '') {
+‏      alert('يرجى كتابة محتوى المنشور');
+‏      return;
+    }
+‏    let imageURL = '';
+‏    if (postImage.files.length > 0) {
+‏      const file = postImage.files[0];
+‏      imageURL = URL.createObjectURL(file);
+    }
+‏    const newPost = {
+‏      author: currentUser.name,
+‏      email: currentUser.email,
+‏      text: text,
+‏      image: imageURL,
+‏      date: new Date().toLocaleString()
+    };
+‏    posts.unshift(newPost);
+‏    renderPosts();
+‏    postText.value = '';
+‏    postImage.value = '';
+‏    alert('تم نشر المنشور!');
+  });
+
+‏  function renderPosts() {
+‏    postsList.innerHTML = '';
+‏    if (posts.length === 0) {
+‏      postsList.innerHTML = '<p>لا توجد منشورات حتى الآن.</p>';
+‏      return;
+    }
+‏    posts.forEach(post => {
+‏      const postEl = document.createElement('div');
+‏      postEl.className = 'post';
+‏      postEl.innerHTML = `
+‏        <strong>${post.author}</strong> <small>${post.date}</small>
+‏        <p>${post.text}</p>
+‏        ${post.image ? `<img src="${post.image}" alt="صورة منشور" />` : ''}
+      `;
+‏      postsList.appendChild(postEl);
+    });
+  }
+
+  // شات بوت AI وهمي بسيط (واجهة فقط)
+‏  const chatbotMessages = document.getElementById('chatbot-messages');
+‏  const chatbotInput = document.getElementById('chatbot-input');
+‏  const chatbotSend = document.getElementById('chatbot-send');
+
+‏  function addChatMessage(text, fromUser = true) {
+‏    const div = document.createElement('div');
+‏    div.className = 'chat-message ' + (fromUser ? 'chat-user' : 'chat-bot');
+‏    div.textContent = text;
+‏    chatbotMessages.appendChild(div);
+‏    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+
+‏  chatbotSend.addEventListener('click', () => {
+‏    const input = chatbotInput.value.trim();
+‏    if (input === '') return;
+‏    addChatMessage(input, true);
+‏    chatbotInput.value = '';
+    // ردود وهمية مبسطة
+‏    setTimeout(() => {
+‏      let reply = "معليش، لست ذكياً كفاية لأساعدك الآن 😅";
+‏      if (input.includes('مرحبا') || input.includes('السلام')) reply = "أهلاً! كيف أقدر أساعدك في Fuzelt؟";
+‏      else if (input.includes('كيف') && input.includes('تسجيل')) reply = "يمكنك تسجيل الدخول من تبويب تسجيل دخول، وإذا ما عندك حساب، سجل من هناك.";
+‏      else if (input.includes('نشر')) reply = "لتنشر منشور، اذهب إلى تبويب إنشاء منشور وأدخل المحتوى.";
+‏      addChatMessage(reply, false);
+    }, 800);
+  });
+
+‏  chatbotInput.addEventListener('keypress', (e) => {
+‏    if (e.key === 'Enter') {
+‏      chatbotSend.click();
+    }
+  });
+
+  // بدء العرض بالصفحة الرئيسية
+‏  showSection('home');
+‏</script>
+
+‏</body>
+‏</html> <!-- استكمال من السطر 401 -->
+<section class="profile-section">
+  <div class="profile-container">
+    <div class="profile-header">
+      <img src="https://via.placeholder.com/100" alt="User Avatar" class="profile-avatar">
+      <div class="profile-info">
+        <h2>@username</h2>
+        <p>نبذة قصيرة عن المستخدم</p>
+      </div>
+    </div>
+    <div class="profile-stats">
+      <span><strong>22</strong> منشور</span>
+      <span><strong>1.2K</strong> متابع</span>
+      <span><strong>300</strong> متابعين</span>
+    </div>
+    <button class="edit-profile">تعديل الملف الشخصي</button>
+  </div>
+</section>
+
+<section class="post-creation">
+  <div class="post-box">
+    <textarea placeholder="وش تفكر فيه؟" id="post-input"></textarea>
+    <div class="post-actions">
+      <label for="image-upload" class="upload-icon">📷</label>
+      <input type="file" id="image-upload" accept="image/*" hidden>
+      <button onclick="postContent()">نشر</button>
+    </div>
+  </div>
+</section>
+
+<section class="posts-feed" id="posts-feed">
+  <!-- المنشورات تضاف هنا عبر الجافاسكربت -->
+</section>
+
+<section class="ai-bot">
+  <div class="ai-header">🤖 Fuzelt AI</div>
+  <div class="ai-chat-box" id="ai-chat-box">
+    <div class="ai-message">مرحباً! كيف أقدر أساعدك في استخدام الموقع؟</div>
+  </div>
+  <div class="ai-input-area">
+    <input type="text" id="ai-input" placeholder="اسألني أي شي...">
+    <button onclick="sendAIMessage()">📨</button>
+  </div>
+</section>
+
+<style>
+/* تكملة تصميم CSS */
+
+.profile-section {
+  background: #fff;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.profile-avatar {
+  width: 100px;
+  border-radius: 50%;
+  border: 3px solid #000;
+}
+
+.profile-info h2 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.edit-profile {
+  background: #000;
+  color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.post-creation {
+  background: #f9f9f9;
+  padding: 20px;
+  border-top: 1px solid #eee;
+}
+
+.post-box textarea {
+  width: 100%;
+  height: 80px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-family: inherit;
+  resize: none;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.upload-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.posts-feed {
+  padding: 20px;
+  background: #fff;
+}
+
+.post {
+  border: 1px solid #eee;
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #fafafa;
+}
+
+.ai-bot {
+  background: #111;
+  color: #fff;
+  padding: 15px;
+}
+
+.ai-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.ai-chat-box {
+  background: #222;
+  height: 150px;
+  overflow-y: auto;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.ai-input-area {
+  display: flex;
+  margin-top: 10px;
+}
+
+.ai-input-area input {
+  flex: 1;
+  padding: 10px;
+  font-family: inherit;
+  border: none;
+}
+
+.ai-input-area button {
+  padding: 10px;
+  background: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+</style>
+
+<script>
+// الجافاسكربت لنشر المحتوى و AI وهمي
+function postContent() {
+  const input = document.getElementById("post-input");
+  const feed = document.getElementById("posts-feed");
+  if (input.value.trim() === "") return;
+  
+  const post = document.createElement("div");
+  post.className = "post";
+  post.innerText = input.value;
+  feed.prepend(post);
+  input.value = "";
+}
+
+function sendAIMessage() {
+  const input = document.getElementById("ai-input");
+  const box = document.getElementById("ai-chat-box");
+  const userMsg = document.createElement("div");
+  userMsg.className = "ai-message";
+  userMsg.innerText = "أنت: " + input.value;
+
+  const botMsg = document.createElement("div");
+  botMsg.className = "ai-message";
+  botMsg.innerText = "Fuzelt AI: تم، عندك شي ثاني؟";
+
+  box.appendChild(userMsg);
+  box.appendChild(botMsg);
+  box.scrollTop = box.scrollHeight;
+  input.value = "";
+}
+</script> <!-- استكمال من السطر 801 -->
+<section class="auth-section" id="auth-section">
+  <div class="auth-container">
+    <h2>تسجيل الدخول إلى Fuzelt</h2>
+    <input type="text" placeholder="البريد الإلكتروني" id="auth-email">
+    <input type="password" placeholder="كلمة المرور" id="auth-password">
+    <button onclick="login()">دخول</button>
+    <p>أو سجل دخول باستخدام:</p>
+    <div class="social-login">
+      <button class="google">Google</button>
+      <button class="apple">Apple</button>
+      <button class="facebook">Facebook</button>
+    </div>
+    <p>ما عندك حساب؟ <a href="#">إنشاء حساب</a></p>
+  </div>
+</section>
+
+<footer class="nav-footer">
+  <button onclick="navigate('home')">🏠 الرئيسية</button>
+  <button onclick="navigate('ai')">🤖 AI</button>
+  <button onclick="navigate('profile')">👤 بروفايل</button>
+</footer>
+
+<style>
+/* تحسين المظهر العام */
+.auth-section {
+  padding: 30px;
+  background: #fff;
+  text-align: center;
+}
+
+.auth-container input {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  padding: 10px;
+  font-family: inherit;
+  border: 1px solid #ccc;
+}
+
+.auth-container button {
+  background: #000;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.social-login button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.google {
+  background: #db4437;
+  color: white;
+}
+.apple {
+  background: #333;
+  color: white;
+}
+.facebook {
+  background: #4267B2;
+  color: white;
+}
+
+.nav-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #000;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.nav-footer button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+}
+</style>
+
+<script>
+// تكملة جافاسكربت (تسجيل الدخول وهمي وتنقل)
+function login() {
+  const email = document.getElementById("auth-email").value;
+  const password = document.getElementById("auth-password").value;
+  if (email && password) {
+    alert("تم تسجيل الدخول بنجاح (تجريبي)");
+    document.getElementById("auth-section").style.display = "none";
+  } else {
+    alert("الرجاء تعبئة كل الحقول");
+  }
+}
+
+function navigate(section) {
+  alert("تنقل إلى: " + section + " (واجهة فقط)");
+}
+</script>
