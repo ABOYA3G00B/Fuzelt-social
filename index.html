@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fuzelt</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      direction: rtl;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: #fff;
+      color: #000;
+      line-height: 1.7;
+    }
+
+    header {
+      background-color: #000;
+      color: #fff;
+      padding: 30px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 60px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      position: relative;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+      background: #f0f0f0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 300;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: #555;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: #fafafa;
+      border: 1px solid #ccc;
+      padding: 25px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .card p {
+      font-weight: 300;
+    }
+
+    footer {
+      background: #000;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .button {
+      padding: 10px 25px;
+      border: none;
+      background: #000;
+      color: #fff;
+      font-weight: 300;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background: #222;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      font-weight: 300;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>518 - Fuzelt</h1>
+  </header>
+
+  <nav>
+    <a href="#">الرئيسية</a>
+    <a href="#">البحث</a>
+    <a href="#">المنشورات</a>
+    <a href="#">رفع صورة</a>
+    <a href="#">البروفايل</a>
+    <a href="#">تسجيل دخول</a>
+  </nav>
+
+  <section>
+    <div class="card">
+      <h3>✍️ إنشاء منشور</h3>
+      <textarea rows="4" placeholder="وش في بالك؟"></textarea>
+      <br/><br/>
+      <button class="button">نشر</button>
+    </div>
+
+    <div class="card">
+      <h3>📸 رفع صورة</h3>
+      <input type="file" />
+      <br/><br/>
+      <button class="button">رفع</button>
+    </div>
+
+    <div class="card">
+      <h3>🔍 البحث</h3>
+      <input type="text" placeholder="اكتب اسم أو كلمة مفتاحية...">
+    </div>
+
+    <div class="card">
+      <h3>👤 تسجيل الدخول</h3>
+      <input type="text" placeholder="الإيميل">
+      <input type="password" placeholder="كلمة المرور">
+      <br/><br/>
+      <button class="button">دخول</button>
+    </div>
+  </section>
+
+  <footer>
+    تواصل معنا: yosefalj13@gmail.com
+  </footer>
+
+</body>
+</html>
