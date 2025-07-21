@@ -3,114 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fuzelt</title>
+  <title>Fuzelt - منصة سوشال AI</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;600&display=swap');
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       direction: rtl;
     }
-
     body {
       font-family: 'Tajawal', sans-serif;
-      background-color: #fff;
+      background-color: #ffffff;
       color: #000;
-      line-height: 1.7;
     }
-
     header {
       background-color: #000;
       color: #fff;
       padding: 30px;
       text-align: center;
     }
-
     header h1 {
       font-size: 60px;
       font-weight: 600;
-      letter-spacing: 2px;
-      position: relative;
     }
-
     nav {
       display: flex;
       justify-content: center;
       gap: 30px;
-      padding: 20px;
-      background: #f0f0f0;
+      padding: 15px;
+      background: #f5f5f5;
       border-bottom: 1px solid #ccc;
     }
-
     nav a {
       text-decoration: none;
       color: #000;
       font-weight: 300;
-      transition: 0.2s;
     }
-
     nav a:hover {
-      color: #555;
+      color: #444;
     }
-
     section {
-      padding: 40px 20px;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
+      padding: 30px;
     }
-
     .card {
-      background: #fafafa;
-      border: 1px solid #ccc;
-      padding: 25px;
-      margin-bottom: 20px;
+      background: #f8f8f8;
+      padding: 20px;
+      border: 1px solid #ddd;
       border-radius: 10px;
+      margin-bottom: 20px;
     }
-
     .card h3 {
-      margin-bottom: 10px;
       font-weight: 600;
+      margin-bottom: 10px;
     }
-
-    .card p {
-      font-weight: 300;
-    }
-
-    footer {
+    .button {
       background: #000;
       color: #fff;
-      padding: 30px 20px;
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    .button {
       padding: 10px 25px;
       border: none;
-      background: #000;
-      color: #fff;
-      font-weight: 300;
-      border-radius: 25px;
+      border-radius: 20px;
       cursor: pointer;
-      transition: 0.3s;
-      text-decoration: none;
     }
-
-    .button:hover {
-      background: #222;
-    }
-
-    input, textarea {
+    textarea, input[type="text"], input[type="password"], input[type="file"] {
       width: 100%;
       padding: 10px;
       margin-top: 10px;
-      border: 1px solid #aaa;
+      border: 1px solid #ccc;
       border-radius: 5px;
       font-weight: 300;
     }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      color: #fff;
+      margin-top: 40px;
+    }
 
+    /* AI Chatbot Style */
+    #chatbot {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 300px;
+      background: #000;
+      color: white;
+      border-radius: 10px;
+      padding: 15px;
+      font-size: 14px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    #chatbot h4 {
+      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    #chatbot input {
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
@@ -121,41 +119,36 @@
 
   <nav>
     <a href="#">الرئيسية</a>
-    <a href="#">البحث</a>
-    <a href="#">المنشورات</a>
+    <a href="#">منشورات</a>
     <a href="#">رفع صورة</a>
-    <a href="#">البروفايل</a>
-    <a href="#">تسجيل دخول</a>
+    <a href="#">البحث</a>
+    <a href="#">تسجيل الدخول</a>
   </nav>
 
   <section>
     <div class="card">
-      <h3>✍️ إنشاء منشور</h3>
-      <textarea rows="4" placeholder="وش في بالك؟"></textarea>
-      <br/><br/>
+      <h3>✍️ أنشئ منشورك</h3>
+      <textarea rows="4" placeholder="وش بخاطرك؟"></textarea><br><br>
       <button class="button">نشر</button>
     </div>
 
     <div class="card">
       <h3>📸 رفع صورة</h3>
-      <input type="file" />
-      <br/><br/>
+      <input type="file"><br><br>
       <button class="button">رفع</button>
     </div>
 
     <div class="card">
       <h3>🔍 البحث</h3>
-      <input type="text" placeholder="اكتب اسم أو كلمة مفتاحية...">
-    </div>
-
-    <div class="card">
-      <h3>👤 تسجيل الدخول</h3>
-      <input type="text" placeholder="الإيميل">
-      <input type="password" placeholder="كلمة المرور">
-      <br/><br/>
-      <button class="button">دخول</button>
+      <input type="text" placeholder="اكتب كلمة للبحث...">
     </div>
   </section>
+
+  <div id="chatbot">
+    <h4>🤖 مساعد Fuzelt</h4>
+    <p>مرحبًا! اسألني عن أي شيء في الموقع وسأساعدك 💬</p>
+    <input type="text" placeholder="اكتب سؤالك...">
+  </div>
 
   <footer>
     تواصل معنا: yosefalj13@gmail.com
